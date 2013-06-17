@@ -119,6 +119,15 @@
   <ItemGroup>
     <Content Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gamegato.GoldRush.Server\Gamegato.GoldRush.Server.csproj">
+      <Project>{34166409-0560-476A-B107-4876342062C4}</Project>
+      <Name>Gamegato.GoldRush.Server</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

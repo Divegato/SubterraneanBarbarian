@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Web
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldRush.Web", "GoldRush.Web\GoldRush.Web.csproj", "{FC05AC4A-1EE0-4714-B31E-41DD0503CB24}"
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamegato.GoldRush.Server", "Gamegato.GoldRush.Server\Gamegato.GoldRush.Server.csproj", "{34166409-0560-476A-B107-4876342062C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamegato.GoldRush.Server.Tests", "Gamegato.GoldRush.Server.Tests\Gamegato.GoldRush.Server.Tests.csproj", "{803D3C67-3687-4906-AF12-782B2BBB5F65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +11,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FC05AC4A-1EE0-4714-B31E-41DD0503CB24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FC05AC4A-1EE0-4714-B31E-41DD0503CB24}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FC05AC4A-1EE0-4714-B31E-41DD0503CB24}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FC05AC4A-1EE0-4714-B31E-41DD0503CB24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34166409-0560-476A-B107-4876342062C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34166409-0560-476A-B107-4876342062C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34166409-0560-476A-B107-4876342062C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34166409-0560-476A-B107-4876342062C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{803D3C67-3687-4906-AF12-782B2BBB5F65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{803D3C67-3687-4906-AF12-782B2BBB5F65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{803D3C67-3687-4906-AF12-782B2BBB5F65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{803D3C67-3687-4906-AF12-782B2BBB5F65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

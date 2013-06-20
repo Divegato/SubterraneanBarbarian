@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamegato.GoldRush.Server", "Gamegato.GoldRush.Server\Gamegato.GoldRush.Server.csproj", "{34166409-0560-476A-B107-4876342062C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamegato.GoldRush.Web", "Gamegato.GoldRush.Web\Gamegato.GoldRush.Web.csproj", "{34166409-0560-476A-B107-4876342062C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamegato.GoldRush.Server.Tests", "Gamegato.GoldRush.Server.Tests\Gamegato.GoldRush.Server.Tests.csproj", "{803D3C67-3687-4906-AF12-782B2BBB5F65}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamegato.GoldRush.Web.Tests", "Gamegato.GoldRush.Web.Tests\Gamegato.GoldRush.Web.Tests.csproj", "{803D3C67-3687-4906-AF12-782B2BBB5F65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

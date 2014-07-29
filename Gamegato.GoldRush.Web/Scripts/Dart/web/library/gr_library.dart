@@ -1,4 +1,4 @@
-library goldrush;
+library roguelike;
 
 import 'dart:html';
 import 'dart:math';

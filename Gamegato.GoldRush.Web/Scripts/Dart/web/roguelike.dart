@@ -1,6 +1,5 @@
 import 'dart:html';
-import 'dart:math';
-import 'library/gr_library.dart';
+import './library/gr_library.dart';
 
 gr_Render render = new gr_Render();
 
@@ -9,10 +8,10 @@ void main() {
   floor.generate();
   render.renderFloor(floor);
 
-  query("#canvas")
+  querySelector("#canvas")
     ..onClick.listen(mouseClick);
 }
 
 void mouseClick(MouseEvent event) {
-  render.renderDot(event.clientX, event.clientY);
+  render.renderDot(event.client.x, event.client.y);
 }

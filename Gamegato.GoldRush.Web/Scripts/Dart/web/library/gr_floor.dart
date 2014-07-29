@@ -1,4 +1,4 @@
-part of goldrush;
+part of roguelike;
 
 class gr_Floor {
   List<gr_Tile> tiles = new List<gr_Tile>();

@@ -1,3 +1,5 @@
 name: SubterraneanBarbarian
 dependencies:
   browser: any
+  duct:
+    git: git://github.com/petrh/duct.git

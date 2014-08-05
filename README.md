@@ -8,5 +8,5 @@ SubterraneanBarbarian
 * UI is rendered using html5 canvas.
 
 ##Server
-* Server will be nodejs
+* Server is written using Dart
 * Client server communication will be done using websockets.

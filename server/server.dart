@@ -1,9 +1,9 @@
 library dartchat;
 
 import 'dart:io';
-import 'dart:async';
-import 'dart:convert';
 import 'package:http_server/http_server.dart' show VirtualDirectory;
+import 'webSockets.dart';
+import 'chatServer.dart';
 
 final HOST = "127.0.0.1";
 final PORT = 3001;
@@ -24,64 +24,6 @@ main() {
       } else {
         vDir.serveRequest(request);
       }
-
     });
   });
-}
-
-class ChatBackend {
-  final WebSockets sockets;
-  final Map users = {};
-
-  ChatBackend(this.sockets){
-    sockets.onNewConnection.listen(onNewConnection);
-  }
-
-  void onNewConnection(conn){
-    registerGuest(conn);
-    setUpListener(conn);
-  }
-
-  registerGuest(conn){
-    var name = "Guest ${users.length + 1}";
-    users[conn] = {"name": name};
-    sockets.broadcast(conn, {"type" : "newUser", "name" : name});
-  }
-
-  setUpListener(conn){
-    sockets.onMessage(conn).listen((m){
-      if(m["type"] == "message"){
-        sockets.broadcast(conn, {
-            "type" : "newMessage",
-            "name" : users[conn]["name"],
-            "text" : m["text"]
-        });
-      }
-    });
-  }
-}
-
-/**
-* A wrapper around WebSocket to provide a socketio like API.
-*/
-class WebSockets {
-  final List<WebSocket> sockets = [];
-  StreamController controller;
-  Stream<WebSocket> onNewConnection;
-
-  WebSockets(){
-    controller = new StreamController();
-    onNewConnection = controller.stream
-        .transform(new WebSocketTransformer())
-        .map((conn){sockets.add(conn); return conn;});
-  }
-
-  Stream<Map> onMessage(WebSocket conn) => conn.map(JSON.decode);
-
-  void broadcast(WebSocket conn, Map message){
-    final m = JSON.encode(message);
-    sockets.where((s) => s != conn).forEach((s) => s.add(m));
-  }
-
-  void handleRequest(HttpRequest request) => controller.add(request);
 }

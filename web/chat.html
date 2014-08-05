@@ -2,8 +2,7 @@
 <html>
 <head>
   <title>Chat</title>
-  <link rel="stylesheet" href="/css/style.css"></link>
-  <script type="application/dart" src="chat.dart"></script>
+  <script type="application/dart" src="ChatCtrl.dart"></script>
 </head>
 
 <body chat-ctrl>
@@ -11,8 +10,7 @@
 <h1>Chat</h1>
 <div id="messages">
   <ul>
-    <li ng-repeat="m in ctrl.chat.messages">
-      {{m["text"]}}
+    <li ng-repeat="m in ctrl.chat.messages" ng-bind-template='{{m["text"]}}'>
     </li>
   </ul>
 </div>

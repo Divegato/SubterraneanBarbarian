@@ -1,5 +1,0 @@
-name: SubterraneanBarbarian
-dependencies:
-  browser: any
-  http_server: any
-  angular: any

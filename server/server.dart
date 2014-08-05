@@ -34,7 +34,7 @@ class ChatBackend {
   final Map users = {};
 
   ChatBackend(this.sockets){
-    sockets.onNewConnection.listen(onNewConnection);;
+    sockets.onNewConnection.listen(onNewConnection);
   }
 
   void onNewConnection(conn){

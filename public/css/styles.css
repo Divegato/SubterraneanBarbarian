@@ -1,0 +1,22 @@
+.map {
+    overflow: scroll;
+}
+
+    .map .map-row {
+        height: 30px;
+        white-space: nowrap;
+    }
+
+        .map .map-row .map-tile {
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+        }
+
+            .map .map-row .map-tile.tile-X {
+                background-color: red;
+            }
+
+            .map .map-row .map-tile.has-player {
+                background-color: blue;
+            }

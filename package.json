@@ -1,10 +1,24 @@
 {
-  "name": "subterranean-barbarian-server",
-  "description": "Subterranean Barbarian application",
+  "name": "subterranean-barbarian",
   "version": "0.0.1",
+  "description": "Ambient multiplayer, roguelike game",
+  "keywords": ["game", "roguelike", "multiplayer"],
+  "author": {
+    "name" : "Brandon Salmon",
+    "email" : "brandon.j.salmon@gmail.com",
+    "url" : "https://github.com/brandonsalmon"
+  },
+  "bugs": {
+    "url": "https://trello.com/b/0QCcjpRN/subterranean-barbarian",
+    "email" : "brandon.j.salmon@gmail.com"
+  },
   "dependencies": {
     "express": "^4.8.7",
     "socket.io": "^1.0.6"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/brandonsalmon/SubterraneanBarbarian.git"
   },
   "private": true
 }

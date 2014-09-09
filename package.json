@@ -1,9 +1,10 @@
 {
   "name": "subterranean-barbarian-server",
+  "description": "Subterranean Barbarian application",
   "version": "0.0.1",
-  "description": "Server application for Subterranean Barbarian",
   "dependencies": {
     "express": "^4.8.7",
     "socket.io": "^1.0.6"
-  }
+  },
+  "private": true
 }

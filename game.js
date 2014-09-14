@@ -1,12 +1,38 @@
 module.exports = function (io) {
     io.on('connection', function (socket) {
         socket.on('look', function (msg) {
-            socket.emit('look', getLook(map, player));
+            //socket.emit('look', getLook(map, player));
+            socket.emit('look', map);
+        });
+        socket.on('move', function (msg) {
+            //socket.emit('look', getLook(map, player));
+            var changes = [];
+            map[player.y][player.x].player = false;
+            changes.push(map[player.y][player.x]);
+            switch (msg) {
+                case 'n':
+                    player.y -= 1;
+                    break;
+                case 's':
+                    player.y += 1;
+                    break;
+                case 'e':
+                    player.x += 1;
+                    break;
+                case 'w':
+                    player.x -= 1;
+                    break;
+                default:
+            }
+            map[player.y][player.x].player = true;
+            changes.push(map[player.y][player.x]);
+            io.emit('changes', changes);
         });
     });
 
     var map = generateMap();
     var player = placePlayer(map);
+    map[player.y][player.x].player = true;
 
     setInterval(function () {
         var changes = getChanges();

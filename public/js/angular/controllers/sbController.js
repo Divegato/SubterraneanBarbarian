@@ -11,6 +11,9 @@
         socket.emit('chat message', $scope.chatInput);
         $scope.chatInput = '';
     };
+    $scope.move = function (direction) {
+        socket.emit('move', direction);
+    };
     socket.on('chat message', function (msg) {
         $scope.addMessage({ text: msg });
     });
@@ -27,8 +30,8 @@
         for (var i in msg) {
             var change = msg[i];
             self.ensureTileExists(change.x, change.y);
-            if ($scope.map[change.y][change.x].render != change.render) {
-                $scope.map[change.y][change.x].render = change.render;
+            if ($scope.map[change.y][change.x] != change) {
+                $scope.map[change.y][change.x] = change;
             }
         }
     });

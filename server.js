@@ -2,8 +2,8 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var chat = require('./chat.js').on(io);
-var game = require('./game.js')(io);
+var chat = require('./lib/chat.js').chat(io);
+var game = require('./lib/game.js').game(io);
 
 app.use(express.static(__dirname + '/public'));
 

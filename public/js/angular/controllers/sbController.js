@@ -1,4 +1,4 @@
-﻿app.controller('sbController', ['$scope', 'socket', function ($scope, socket) {
+﻿app.controller('sbController', ['$scope', '$interval', 'socket', function ($scope, $interval, socket) {
     var self = this;
     var messageId = 0;
     $scope.messages = [];
@@ -13,6 +13,33 @@
     };
     $scope.move = function (direction) {
         socket.emit('move', direction);
+    };
+    $scope.moveRandom = function () {
+        $interval(function () {
+            var directionInt = Math.ceil(Math.random() * 4);
+            var direction;
+
+            switch (directionInt) {
+                case 1:
+                    direction = 'n';
+                    break;
+                case 2:
+                    direction = 's';
+                    break;
+                case 3:
+                    direction = 'e';
+                    break;
+                case 4:
+                    direction = 'w';
+                    break;
+                default:
+                    break;
+            }
+
+            if (direction) {
+                socket.emit('move', direction);
+            }
+        }, 2000);
     };
     socket.on('chat message', function (msg) {
         $scope.addMessage({ text: msg });

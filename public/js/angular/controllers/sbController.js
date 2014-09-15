@@ -16,20 +16,26 @@
     };
     $scope.moveRandom = function () {
         $interval(function () {
-            var directionInt = Math.ceil(Math.random() * 4);
+            var directionInt = Math.ceil(Math.random() * 6);
             var direction;
 
             switch (directionInt) {
                 case 1:
-                    direction = 'n';
+                    direction = 'nw';
                     break;
                 case 2:
-                    direction = 's';
+                    direction = 'ne';
                     break;
                 case 3:
-                    direction = 'e';
+                    direction = 'sw';
                     break;
                 case 4:
+                    direction = 'se';
+                    break;
+                case 5:
+                    direction = 'e';
+                    break;
+                case 6:
                     direction = 'w';
                     break;
                 default:
@@ -39,7 +45,7 @@
             if (direction) {
                 socket.emit('move', direction);
             }
-        }, 2000);
+        }, 200);
     };
     socket.on('chat message', function (msg) {
         $scope.addMessage({ text: msg });

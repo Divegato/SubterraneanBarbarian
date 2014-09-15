@@ -14,10 +14,12 @@
                         <span ng-repeat="tile in row" class="map-tile tile-{{tile.render}}" ng-class="{'has-player': tile.player}"></span>
                     </div>
                 </div>
-                <div class="btn btn-default" ng-click="move('n')">^</div><br />
-                <div class="btn btn-default" ng-click="move('w')"><</div>
-                <div class="btn btn-default" ng-click="move('e')">></div><br />
-                <div class="btn btn-default" ng-click="move('s')">v</div>
+                <div class="btn btn-default" ng-click="move('nw')">nw</div>
+                <div class="btn btn-default" ng-click="move('ne')">ne</div><br />
+                <div class="btn btn-default" ng-click="move('w')">w</div>
+                <div class="btn btn-default" ng-click="move('e')">e</div><br />
+                <div class="btn btn-default" ng-click="move('sw')">sw</div>
+                <div class="btn btn-default" ng-click="move('se')">se</div>
                 <div class="btn btn-default" ng-click="moveRandom()">Random</div>
             </div>
             <div class="col-sm-2">

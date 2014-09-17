@@ -1,69 +1,18 @@
-.map {
-    overflow: scroll;
-    padding-top: 7px;
+html {
+    overflow: hidden;
 }
 
-    .map .map-row {
-        height: 23px;
-        white-space: nowrap;
-        clear: both;
-    }
+#chat-column {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    bottom: 20px;
+    width: 300px;
+}
 
-        .map .map-row:nth-child(even) {
-            padding-left: 15px;
-        }
-
-
-        .map .map-row .map-tile {
-            float: left;
-            width: 30px;
-            height: 15px;
-            margin-right: 1px;
-            margin-bottom: -7px;
-        }
-
-            .map .map-row .map-tile:before {
-                content: '';
-                width: 0;
-                float: left;
-                margin-top: -7px;
-                border-bottom: 7px solid transparent;
-                border-left: 15px solid transparent;
-                border-right: 15px solid transparent;
-            }
-
-            .map .map-row .map-tile:after {
-                content: '';
-                width: 0;
-                float: left;
-                margin-top: 15px;
-                margin-bottom: -7px;
-                border-top: 7px solid transparent;
-                border-left: 15px solid transparent;
-                border-right: 15px solid transparent;
-            }
-
-            .map .map-row .map-tile.tile-X {
-                background-color: red;
-            }
-
-                .map .map-row .map-tile.tile-X:before {
-                    border-bottom-color: red;
-                }
-
-                .map .map-row .map-tile.tile-X:after {
-                    border-top-color: red;
-                }
-
-            .map .map-row .map-tile.has-player {
-                background-color: blue;
-            }
-
-                .map .map-row .map-tile.has-player:before {
-                    top: 0;
-                    border-bottom-color: blue;
-                }
-
-                .map .map-row .map-tile.has-player:after {
-                    border-top-color: blue;
-                }
+#controls {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    height: 100px;
+}

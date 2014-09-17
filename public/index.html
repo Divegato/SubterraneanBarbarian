@@ -7,32 +7,26 @@
 </head>
 <body ng-app="sb">
     <div ng-controller="sbController" ng-init="look()">
-        <div class="row">
-            <div class="col-sm-10">
-                <div class="map">
-                    <div ng-repeat="row in map" class="map-row">
-                        <span ng-repeat="tile in row" class="map-tile tile-{{tile.render}}" ng-class="{'has-player': tile.player}"></span>
-                    </div>
+        <canvas sb-render sb-map="map"></canvas>
+        <div id="chat-column">
+            <form class="form-inline" role="form" ng-submit="sendMessage()">
+                <div class="form-group">
+                    <input autocomplete="off" ng-model="chatInput" class="form-control" />
                 </div>
-                <div class="btn btn-default" ng-click="move('nw')">nw</div>
-                <div class="btn btn-default" ng-click="move('ne')">ne</div><br />
-                <div class="btn btn-default" ng-click="move('w')">w</div>
-                <div class="btn btn-default" ng-click="move('e')">e</div><br />
-                <div class="btn btn-default" ng-click="move('sw')">sw</div>
-                <div class="btn btn-default" ng-click="move('se')">se</div>
-                <div class="btn btn-default" ng-click="moveRandom()">Random</div>
-            </div>
-            <div class="col-sm-2">
-                <form class="form-inline" role="form" ng-submit="sendMessage()">
-                    <div class="form-group">
-                        <input autocomplete="off" ng-model="chatInput" class="form-control" />
-                    </div>
-                    <button type="submit" ng-disabled="!chatInput" class="btn btn-default">Send</button>
-                </form>
-                <ul id="messages">
-                    <li ng-bind-template="{{message.text}}" ng-repeat="message in messages | orderBy:'-id'"></li>
-                </ul>
-            </div>
+                <button type="submit" ng-disabled="!chatInput" class="btn btn-default">Send</button>
+            </form>
+            <ul id="messages">
+                <li ng-bind-template="{{message.text}}" ng-repeat="message in messages | orderBy:'-id'"></li>
+            </ul>
+        </div>
+        <div id="controls">
+            <div class="btn btn-default" ng-click="move('nw')">nw</div>
+            <div class="btn btn-default" ng-click="move('ne')">ne</div><br />
+            <div class="btn btn-default" ng-click="move('w')">w</div>
+            <div class="btn btn-default" ng-click="move('e')">e</div><br />
+            <div class="btn btn-default" ng-click="move('sw')">sw</div>
+            <div class="btn btn-default" ng-click="move('se')">se</div>
+            <div class="btn btn-default" ng-click="moveRandom()">Random</div>
         </div>
     </div>
     <script src="/socket.io/socket.io.js"></script>
@@ -42,5 +36,6 @@
     <script src="js/angular/app/app.js"></script>
     <script src="js/angular/services/socketService.js"></script>
     <script src="js/angular/controllers/sbController.js"></script>
+    <script src="js/angular/directives/render.js"></script>
 </body>
 </html>

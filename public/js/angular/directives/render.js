@@ -13,11 +13,16 @@
             }, true);
 
             function render() {
+                canvas.rect(0, 0, $element[0].width, $element[0].height)
+                canvas.fillStyle = "#CCC";
+                canvas.fill();
                 for (var y in $scope.map) {
                     var row = $scope.map[y];
                     for (var x in row) {
                         var tile = row[x];
-                        renderTile(tile);
+                        if (tile.render != 'U') {
+                            renderTile(tile);
+                        }
                     }
                 }
             };
@@ -39,11 +44,13 @@
                 var renderY = (y * tileEffectiveHeight) + tileRadius;
 
                 // Alternating tiles are indented
-                renderX += y % 2 == 0 ? 0 : (tileWidth / 2);
+                //renderX += y % 2 == 0 ? 0 : (tileWidth / 2);
 
                 canvas.beginPath();
                 hexagon(renderX, renderY, tileRadius);
-                canvas.fillStyle = tile.player ? "rgb(51,128,255)" : (tile.render == "X" ? "rgb(255,12,25)" : "rgb(255,255,255)");
+
+                canvas.fillStyle = tile.player ? "rgb(51,128,255)" : (tile.render == "X" ? "#666" : "rgb(255,255,255)");
+                canvas.strokeStyle = "#666";
                 canvas.fill();
                 //canvas.stroke();
             };

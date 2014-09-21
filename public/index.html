@@ -25,8 +25,12 @@
             <div class="btn btn-default" ng-click="move('w')">w</div>
             <div class="btn btn-default" ng-click="move('e')">e</div><br />
             <div class="btn btn-default" ng-click="move('sw')">sw</div>
-            <div class="btn btn-default" ng-click="move('se')">se</div>
+            <div class="btn btn-default" ng-click="move('se')">se</div><br />
             <div class="btn btn-default" ng-click="moveRandom()">Random</div>
+            <div class="btn btn-default" ng-click="stopRandom()"> Stop Random</div>
+            <div class="btn btn-default" ng-click="look()">Look</div>
+            <div class="btn btn-default" ng-click="lookFull()">Look Full</div>
+            <!--<div>{{map}}</div>-->
         </div>
     </div>
     <script src="/socket.io/socket.io.js"></script>

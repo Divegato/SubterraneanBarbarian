@@ -7,6 +7,9 @@
     $scope.look = function () {
         socket.emit('look');
     };
+    $scope.lookFull = function () {
+        socket.emit('lookfull');
+    };
     $scope.sendMessage = function () {
         socket.emit('chat message', $scope.chatInput);
         $scope.chatInput = '';
@@ -14,8 +17,13 @@
     $scope.move = function (direction) {
         socket.emit('move', direction);
     };
+    var randomPromise;
+    $scope.stopRandom = function () {
+        $interval.cancel(randomPromise);
+    };
     $scope.moveRandom = function () {
-        $interval(function () {
+        $scope.stopRandom();
+        randomPromise = $interval(function () {
             var directionInt = Math.ceil(Math.random() * 6);
             var direction;
 
@@ -57,17 +65,23 @@
         $scope.addMessage({ text: msg + ' has left the room' });
     });
     socket.on('look', function (msg) {
-        $scope.map = msg;
+        $scope.processChanges(msg);
+        //$scope.map = msg;
     });
     socket.on('changes', function (msg) {
+        $scope.processChanges(msg);
+        $scope.look();
+    });
+
+    $scope.processChanges = function (msg) {
         for (var i in msg) {
             var change = msg[i];
-            self.ensureTileExists(change.x, change.y);
-            if ($scope.map[change.y][change.x] != change) {
-                $scope.map[change.y][change.x] = change;
+            self.ensureTileExists(change);
+            if ($scope.map[change.y][Math.floor(change.x)] != change) {
+                $scope.map[change.y][Math.floor(change.x)] = change;
             }
         }
-    });
+    }
 
     $scope.addMessage = function (message) {
         messageId++;
@@ -75,12 +89,12 @@
         $scope.messages.push(message);
     };
 
-    self.ensureTileExists = function (x, y) {
-        while (!$scope.map[y]) {
+    self.ensureTileExists = function (tile) {
+        while (!$scope.map[tile.y]) {
             $scope.map.push([]);
         }
-        while (!$scope.map[y][x]) {
-            $scope.map[y].push({ x: $scope.map[y].length, y: y, render: '' });
+        while (!$scope.map[tile.y][Math.floor(tile.x)]) {
+            $scope.map[tile.y].push({ x: $scope.map[tile.y].length + (tile.y % 2 == 0 ? 0.5 : 0), y: tile.y, render: 'U' });
         }
     };
 

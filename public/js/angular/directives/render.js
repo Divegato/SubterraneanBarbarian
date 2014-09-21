@@ -2,15 +2,20 @@
     return {
         restrict: "A",
         scope: {
-            map: '=sbMap'
+            map: '=sbMap',
+            player: '=sbPlayer',
+            tileSize: '=sbTileSize'
         },
         controller: function ($scope, $element) {
-            var tileSize = 50;
             var canvas = $element[0].getContext('2d');
 
             $scope.$watch('map', function (newValue, oldValue) {
                 render();
             }, true);
+
+            $scope.$watch('tileSize', function (newValue, oldValue) {
+                render();
+            });
 
             function render() {
                 canvas.rect(0, 0, $element[0].width, $element[0].height)
@@ -31,10 +36,10 @@
                 var x = tile.x;
                 var y = tile.y;
 
-                var tileRadius = (tileSize / 2);
+                var tileRadius = ($scope.tileSize / 2);
 
                 // Calculate the actual hexagon width based on the tile size
-                var tileWidth = tileSize * Math.cos(Math.PI / 6);
+                var tileWidth = $scope.tileSize * Math.cos(Math.PI / 6);
 
                 // Effective height is smaller than tile size because hexagon rows overlap
                 var tileEffectiveHeight = tileRadius + (tileRadius * Math.sin(Math.PI / 6))
@@ -43,8 +48,19 @@
                 var renderX = (x * tileWidth) + (tileWidth / 2);
                 var renderY = (y * tileEffectiveHeight) + tileRadius;
 
+                // Calculate the center of the screen
+                var centerX = $element[0].width / 2;
+                var centerY = $element[0].height / 2;
+
+                // Calculate the center of the player
+                var playerX = ($scope.player.x * tileWidth) + (tileWidth / 2);
+                var playerY = ($scope.player.y * tileEffectiveHeight) + tileRadius;
+
                 // Alternating tiles are indented
                 //renderX += y % 2 == 0 ? 0 : (tileWidth / 2);
+
+                renderX += centerX - playerX;
+                renderY += centerY - playerY;
 
                 canvas.beginPath();
                 hexagon(renderX, renderY, tileRadius);

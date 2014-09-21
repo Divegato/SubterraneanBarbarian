@@ -3,19 +3,25 @@
     var messageId = 0;
     $scope.messages = [];
     $scope.map = [];
+    $scope.player = {};
+    $scope.tileSize = 100;
 
     $scope.look = function () {
         socket.emit('look');
     };
-    $scope.lookFull = function () {
-        socket.emit('lookfull');
-    };
+
     $scope.sendMessage = function () {
         socket.emit('chat message', $scope.chatInput);
         $scope.chatInput = '';
     };
     $scope.move = function (direction) {
         socket.emit('move', direction);
+    };
+    $scope.zoomIn = function () {
+        $scope.tileSize = Math.min($scope.tileSize * 1.1, 500);
+    };
+    $scope.zoomOut = function () {
+        $scope.tileSize = Math.max($scope.tileSize * 0.9, 25);
     };
     var randomPromise;
     $scope.stopRandom = function () {
@@ -64,13 +70,17 @@
     socket.on('userDisconnect', function (msg) {
         $scope.addMessage({ text: msg + ' has left the room' });
     });
+
     socket.on('look', function (msg) {
         $scope.processChanges(msg);
-        //$scope.map = msg;
     });
+
     socket.on('changes', function (msg) {
         $scope.processChanges(msg);
         $scope.look();
+    });
+    socket.on('player', function (player) {
+        $scope.player = player;
     });
 
     $scope.processChanges = function (msg) {
